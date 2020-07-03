@@ -15,10 +15,6 @@
   </url>
   
   <url>
-    <loc>https://yuanluxu.github.io/author/nelson-bighetti/</loc>
-  </url>
-  
-  <url>
     <loc>https://yuanluxu.github.io/post/</loc>
   </url>
   
@@ -36,6 +32,10 @@
   
   <url>
     <loc>https://yuanluxu.github.io/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>https://yuanluxu.github.io/author/yuanlu-xu/</loc>
   </url>
   
 </urlset>
