@@ -45,43 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sections.forEach(section => observer.observe(section));
 
-  // --- Counter animation ---
-  const counters = document.querySelectorAll('.metric-number');
-  let countersAnimated = false;
-
-  const animateCounters = () => {
-    if (countersAnimated) return;
-    countersAnimated = true;
-    counters.forEach(counter => {
-      const target = parseInt(counter.dataset.target, 10);
-      const duration = 1800;
-      const start = performance.now();
-
-      const update = (now) => {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        // Ease out cubic
-        const eased = 1 - Math.pow(1 - progress, 3);
-        counter.textContent = Math.round(eased * target).toLocaleString();
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        }
-      };
-      requestAnimationFrame(update);
-    });
-  };
-
-  const metricsSection = document.getElementById('metrics');
-  if (metricsSection) {
-    const metricsObserver = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        animateCounters();
-        metricsObserver.disconnect();
-      }
-    }, { threshold: 0.3 });
-    metricsObserver.observe(metricsSection);
-  }
-
   // --- Publication filters ---
   const filterBtns = document.querySelectorAll('.pub-filter');
   const pubItems = document.querySelectorAll('.pub-item');
@@ -106,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Fade-in on scroll ---
   const fadeElements = document.querySelectorAll(
-    '.research-card, .metric-card, .pub-item, .timeline-item, .contact-card'
+    '.research-card, .pub-item, .timeline-item, .contact-card'
   );
 
   fadeElements.forEach(el => el.classList.add('fade-in'));
